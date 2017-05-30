@@ -1,0 +1,15 @@
+import speech_recognition as sr
+ 
+r=sr.Recognizer()
+r.pause_threshold=0.7
+r.energy_threshold=400
+ 
+while(1):
+    with sr.Microphone () as source:
+            audio=r.listen(source)
+            message=str(audio)
+ 
+    try:
+        print(r.recognize_google(audio))
+    except sr.UnknownValueError:
+        print("We could not understand audio please speak again")
